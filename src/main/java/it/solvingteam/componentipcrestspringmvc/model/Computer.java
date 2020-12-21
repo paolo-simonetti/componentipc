@@ -1,5 +1,6 @@
 package it.solvingteam.componentipcrestspringmvc.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class Computer {
 	private String description;
 	
 	@OneToMany(mappedBy="computer")
-	private Set<Piece> pieces;
+	private Set<Piece> pieces=new HashSet<>();
 
 	public Long getId() {
 		return id;

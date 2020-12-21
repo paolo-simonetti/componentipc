@@ -3,11 +3,15 @@ package it.solvingteam.componentipcrestspringmvc.mapper;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class AbstractMapper<Entity,DTO> {
+public abstract class AbstractMapper<Entity,DTO, InsertMessageDTO, UpdateMessageDTO> {
 
 	public abstract DTO convertEntityToDto(Entity entity);
 	
 	public abstract Entity convertDtoToEntity(DTO dto);
+	
+	public abstract Entity convertInsertMessageDTOToEntity(InsertMessageDTO insertMessageDTO);
+	
+	public abstract Entity convertUpdateMessageDTOToEntity(UpdateMessageDTO updateMessageDTO);
 	
 	public Set<DTO> convertEntityToDto(Set<Entity> entities) {
         if (entities == null) {

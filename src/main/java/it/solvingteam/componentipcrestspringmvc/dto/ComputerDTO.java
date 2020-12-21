@@ -1,5 +1,6 @@
 package it.solvingteam.componentipcrestspringmvc.dto;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ComputerDTO {
@@ -10,7 +11,7 @@ public class ComputerDTO {
 	
 	private String description;
 
-	private Set<String> piecesIds;
+	private Set<String> piecesIds=new HashSet<>();
 
 	public String getId() {
 		return id;

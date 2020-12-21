@@ -1,7 +1,9 @@
 package it.solvingteam.componentipcrestspringmvc.dto.message;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 
@@ -10,13 +12,14 @@ public class ComputerUpdateMessageDTO {
 	@Positive
 	private String id;
 	
-	@NotEmpty
+	@NotBlank
 	private String brand;
 	
-	@NotEmpty
+	@NotBlank
 	private String description;
 
-	private Set<String> piecesIds;
+	@NotEmpty
+	private Set<String> piecesIds=new HashSet<>();
 
 	public String getId() {
 		return id;

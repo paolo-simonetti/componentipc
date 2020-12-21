@@ -1,18 +1,21 @@
 package it.solvingteam.componentipcrestspringmvc.dto.message;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 public class ComputerInsertMessageDTO {
 	
-	@NotEmpty
+	@NotBlank
 	private String brand;
 	
-	@NotEmpty
+	@NotBlank
 	private String description;
 
-	private Set<String> piecesIds;
+	@NotEmpty
+	private Set<String> piecesIds=new HashSet<>();
 
 	public String getBrand() {
 		return brand;

@@ -1,11 +1,15 @@
 package it.solvingteam.componentipcrestspringmvc.mapper;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 
 import it.solvingteam.componentipcrestspringmvc.dto.PieceDTO;
+import it.solvingteam.componentipcrestspringmvc.dto.message.PieceInsertMessageDTO;
+import it.solvingteam.componentipcrestspringmvc.dto.message.PieceUpdateMessageDTO;
 import it.solvingteam.componentipcrestspringmvc.model.Piece;
 
-public class PieceMapper extends AbstractMapper<Piece, PieceDTO> {
+@Component
+public class PieceMapper extends AbstractMapper<Piece, PieceDTO, PieceInsertMessageDTO, PieceUpdateMessageDTO> {
 
 	@Override
 	public PieceDTO convertEntityToDto(Piece entity) {
@@ -64,5 +68,57 @@ public class PieceMapper extends AbstractMapper<Piece, PieceDTO> {
 				
 		return entity;
 	}
+
+	@Override
+	public Piece convertInsertMessageDTOToEntity(PieceInsertMessageDTO insertMessageDTO) {
+		if (insertMessageDTO==null) {			
+			return null;
+		}
+		
+		Piece entity = new Piece();
+		
+		if(StringUtils.isNotBlank(insertMessageDTO.getBrand())) {
+			entity.setBrand(insertMessageDTO.getBrand());			
+		}
+		
+		if(StringUtils.isNotBlank(insertMessageDTO.getCode())) {
+			entity.setCode(insertMessageDTO.getCode());
+		}
+		
+		if(StringUtils.isNotBlank(insertMessageDTO.getDescription())) {
+			entity.setDescription(insertMessageDTO.getDescription());
+		}
+		
+		return entity;
+	}
+
+	@Override
+	public Piece convertUpdateMessageDTOToEntity(PieceUpdateMessageDTO updateMessageDTO) {
+		if(updateMessageDTO==null) {
+			return null;			
+		}
+		
+		Piece entity=new Piece();
+		
+		if(StringUtils.isNotBlank(updateMessageDTO.getId())) {
+			entity.setId(Long.parseLong(updateMessageDTO.getId()));
+		}
+
+		if(StringUtils.isNotBlank(updateMessageDTO.getBrand())) {
+			entity.setBrand(updateMessageDTO.getBrand());			
+		}
+		
+		if(StringUtils.isNotBlank(updateMessageDTO.getCode())) {
+			entity.setCode(updateMessageDTO.getCode());
+		}
+		
+		if(StringUtils.isNotBlank(updateMessageDTO.getDescription())) {
+			entity.setDescription(updateMessageDTO.getDescription());
+		}
+
+		return entity;
+	}
+	
+	
 
 }
